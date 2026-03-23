@@ -1,7 +1,31 @@
-<h2>Categorias</h2>
+<div class="category-page">
+  <app-category-form (save)="onSaveCategory($event)"></app-category-form>
 
-<ul>
-  <li *ngFor="let category of categories">
-    {{ category.name }} - {{ category.type }}
-  </li>
-</ul>
+  <div class="category-list-container">
+    <h2>Categorias</h2>
+    
+    <table class="category-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Tipo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let category of categories">
+          <td>{{ category.id }}</td>
+          <td>{{ category.name }}</td>
+          <td>
+            <span [class]="'badge ' + category.type">
+              {{ category.type === 'income' ? 'Receita' : 'Despesa' }}
+            </span>
+          </td>
+        </tr>
+        <tr *ngIf="categories.length === 0">
+          <td colspan="3" class="empty-state">Nenhuma categoria cadastrada.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

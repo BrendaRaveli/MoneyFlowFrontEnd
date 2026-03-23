@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CategoryService } from '../../services/category.service';
 import { Category } from '../../models/category';
+import { CategoryForm } from '../../components/category-form/category-form';
 
 @Component({
   selector: 'app-category-list',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, CategoryForm],
   templateUrl: './category-list.html',
   styleUrl: './category-list.css'
 })
@@ -19,5 +20,9 @@ export class CategoryListComponent implements OnInit {
     this.categoryService.getAll().subscribe(data => {
       this.categories = data;
     });
+  }
+
+  onSaveCategory(category: Category): void {
+    this.categoryService.create(category).subscribe();
   }
 }
