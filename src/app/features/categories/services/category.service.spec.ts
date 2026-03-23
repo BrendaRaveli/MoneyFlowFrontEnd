@@ -1,15 +1,12 @@
 import { TestBed } from '@angular/core/testing';
+import { CategoryService } from './category.service';
 
-
-describe('Category', () => {
-  let service: any;
+describe('CategoryService', () => {
+  let service: CategoryService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    // Category is not imported; either import the service or use a different provider
-    // Example (uncomment and adjust as needed):
-    // import { CategoryService } from './category.service';
-    // service = TestBed.inject(CategoryService);
+    service = TestBed.inject(CategoryService);
   });
 
   it('should be created', () => {

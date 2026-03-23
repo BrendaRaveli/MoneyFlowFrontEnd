@@ -1,17 +1,27 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { of } from 'rxjs';
+import { CategoryListComponent } from './category-list-component';
+import { CategoryService } from '../../services/category.service';
+import { vi } from 'vitest';
 
-import { CategoryList } from './category-list';
-
-describe('CategoryList', () => {
-  let component: CategoryList;
-  let fixture: ComponentFixture<CategoryList>;
+describe('CategoryListComponent', () => {
+  let component: CategoryListComponent;
+  let fixture: ComponentFixture<CategoryListComponent>;
+  let categoryServiceMock: any;
 
   beforeEach(async () => {
+    categoryServiceMock = {
+      getAll: vi.fn().mockReturnValue(of([]))
+    };
+
     await TestBed.configureTestingModule({
-      imports: [CategoryList],
+      imports: [CategoryListComponent],
+      providers: [
+        { provide: CategoryService, useValue: categoryServiceMock }
+      ]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(CategoryList);
+    fixture = TestBed.createComponent(CategoryListComponent);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });
