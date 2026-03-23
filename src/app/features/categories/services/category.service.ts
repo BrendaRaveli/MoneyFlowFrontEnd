@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { Category } from '../models/category';
+import { CreateCategoryDto } from '../models/create-category.dto';
+import { UpdateCategoryDto } from '../models/update-category.dto';
 
 @Injectable({
   providedIn: 'root'
@@ -12,22 +14,33 @@ export class CategoryService {
     { id: 2, name: 'Salário', type: 'income' }
   ];
 
-  // Usando BehaviorSubject para tornar a lista reativa
   private categoriesSubject = new BehaviorSubject<Category[]>(this.categories);
 
   getAll(): Observable<Category[]> {
     return this.categoriesSubject.asObservable();
   }
 
-  create(category: Category): Observable<Category> {
-    this.categories = [...this.categories, category];
+  create(category: CreateCategoryDto): Observable<Category> {
+    const newCategory: Category = {
+      ...category,
+      id: Math.floor(Math.random() * 1000)
+    };
+    this.categories = [...this.categories, newCategory];
     this.categoriesSubject.next(this.categories);
-    return of(category);
+    return of(newCategory);
   }
 
   delete(id: number): Observable<void> {
     this.categories = this.categories.filter(c => c.id !== id);
     this.categoriesSubject.next(this.categories);
     return of(undefined);
+  }
+
+  update(updatedCategory: UpdateCategoryDto): Observable<Category> {
+    this.categories = this.categories.map(c => 
+      c.id === updatedCategory.id ? { ...updatedCategory } : c
+    );
+    this.categoriesSubject.next(this.categories);
+    return of(updatedCategory as Category);
   }
 }

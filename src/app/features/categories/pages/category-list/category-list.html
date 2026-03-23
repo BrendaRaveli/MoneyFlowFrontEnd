@@ -1,5 +1,9 @@
 <div class="category-page">
-  <app-category-form (save)="onSaveCategory($event)"></app-category-form>
+  <app-category-form 
+    [categoryToEdit]="selectedCategory" 
+    (save)="onSaveCategory($event)"
+    (cancel)="onCancelEdit()">
+  </app-category-form>
 
   <div class="category-list-container">
     <h2>Categorias</h2>
@@ -14,7 +18,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let category of categories">
+        <tr *ngFor="let category of categories" [class.selected]="selectedCategory?.id === category.id">
           <td>{{ category.id }}</td>
           <td>{{ category.name }}</td>
           <td>
@@ -22,7 +26,8 @@
               {{ category.type === 'income' ? 'Receita' : 'Despesa' }}
             </span>
           </td>
-          <td>
+          <td class="actions-cell">
+            <button class="btn-edit" (click)="onEditCategory(category)">Editar</button>
             <button class="btn-delete" (click)="onDeleteCategory(category.id)">Excluir</button>
           </td>
         </tr>

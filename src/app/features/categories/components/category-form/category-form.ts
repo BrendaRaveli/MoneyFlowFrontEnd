@@ -1,7 +1,8 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, OnChanges, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Category } from '../../models/category';
+import { BaseCategoryDto } from '../../models/base-category.dto';
 
 @Component({
   selector: 'app-category-form',
@@ -10,8 +11,10 @@ import { Category } from '../../models/category';
   templateUrl: './category-form.html',
   styleUrl: './category-form.css',
 })
-export class CategoryForm {
-  @Output() save = new EventEmitter<Category>();
+export class CategoryForm implements OnChanges {
+  @Input() categoryToEdit: Category | null = null;
+  @Output() save = new EventEmitter<BaseCategoryDto>();
+  @Output() cancel = new EventEmitter<void>();
   
   categoryForm: FormGroup;
 
@@ -22,15 +25,32 @@ export class CategoryForm {
     });
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['categoryToEdit'] && this.categoryToEdit) {
+      this.categoryForm.patchValue({
+        name: this.categoryToEdit.name,
+        type: this.categoryToEdit.type
+      });
+    }
+  }
+
   onSubmit(): void {
     if (this.categoryForm.valid) {
-      const newCategory: Category = {
-        id: Math.floor(Math.random() * 1000), // ID temporário enquanto em memória
+      const categoryData: BaseCategoryDto = {
         ...this.categoryForm.value
       };
       
-      this.save.emit(newCategory);
-      this.categoryForm.reset({ type: 'expense' });
+      this.save.emit(categoryData);
+      this.resetForm();
     }
+  }
+
+  onCancel(): void {
+    this.resetForm();
+    this.cancel.emit();
+  }
+
+  private resetForm(): void {
+    this.categoryForm.reset({ type: 'expense' });
   }
 }

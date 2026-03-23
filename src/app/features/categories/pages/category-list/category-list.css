@@ -68,3 +68,27 @@
 .btn-delete:hover {
   background-color: #c82333;
 }
+
+.btn-edit {
+  background-color: #ffc107;
+  color: #212529;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: background-color 0.2s;
+}
+
+.btn-edit:hover {
+  background-color: #e0a800;
+}
+
+.actions-cell {
+  display: flex;
+  gap: 0.5rem;
+}
+
+tr.selected {
+  background-color: #fff3cd;
+}

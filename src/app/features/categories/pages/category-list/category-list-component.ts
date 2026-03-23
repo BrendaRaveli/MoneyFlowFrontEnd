@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CategoryService } from '../../services/category.service';
 import { Category } from '../../models/category';
+import { BaseCategoryDto } from '../../models/base-category.dto';
+import { CreateCategoryDto } from '../../models/create-category.dto';
+import { UpdateCategoryDto } from '../../models/update-category.dto';
 import { CategoryForm } from '../../components/category-form/category-form';
 
 @Component({
@@ -13,6 +16,7 @@ import { CategoryForm } from '../../components/category-form/category-form';
 })
 export class CategoryListComponent implements OnInit {
   categories: Category[] = [];
+  selectedCategory: Category | null = null;
 
   constructor(private categoryService: CategoryService) {}
 
@@ -22,8 +26,27 @@ export class CategoryListComponent implements OnInit {
     });
   }
 
-  onSaveCategory(category: Category): void {
-    this.categoryService.create(category).subscribe();
+  onSaveCategory(categoryData: BaseCategoryDto): void {
+    if (this.selectedCategory) {
+      const updateData: UpdateCategoryDto = {
+        ...categoryData,
+        id: this.selectedCategory.id
+      };
+      this.categoryService.update(updateData).subscribe(() => {
+        this.selectedCategory = null;
+      });
+    } else {
+      const createData: CreateCategoryDto = { ...categoryData };
+      this.categoryService.create(createData).subscribe();
+    }
+  }
+
+  onEditCategory(category: Category): void {
+    this.selectedCategory = { ...category };
+  }
+
+  onCancelEdit(): void {
+    this.selectedCategory = null;
   }
 
   onDeleteCategory(id: number): void {

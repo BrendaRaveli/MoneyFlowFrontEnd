@@ -1,5 +1,5 @@
 <div class="category-form-container">
-  <h3>Nova Categoria</h3>
+  <h3>{{ categoryToEdit ? 'Editar Categoria' : 'Nova Categoria' }}</h3>
   
   <form [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
@@ -23,6 +23,13 @@
       </select>
     </div>
 
-    <button type="submit" [disabled]="categoryForm.invalid">Salvar</button>
+    <div class="form-actions">
+      <button type="submit" [disabled]="categoryForm.invalid">
+        {{ categoryToEdit ? 'Atualizar' : 'Salvar' }}
+      </button>
+      <button type="button" *ngIf="categoryToEdit" class="btn-cancel" (click)="onCancel()">
+        Cancelar
+      </button>
+    </div>
   </form>
 </div>
