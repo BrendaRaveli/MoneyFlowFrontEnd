@@ -10,6 +10,7 @@
           <th>ID</th>
           <th>Nome</th>
           <th>Tipo</th>
+          <th>Ações</th>
         </tr>
       </thead>
       <tbody>
@@ -21,9 +22,12 @@
               {{ category.type === 'income' ? 'Receita' : 'Despesa' }}
             </span>
           </td>
+          <td>
+            <button class="btn-delete" (click)="onDeleteCategory(category.id)">Excluir</button>
+          </td>
         </tr>
         <tr *ngIf="categories.length === 0">
-          <td colspan="3" class="empty-state">Nenhuma categoria cadastrada.</td>
+          <td colspan="4" class="empty-state">Nenhuma categoria cadastrada.</td>
         </tr>
       </tbody>
     </table>

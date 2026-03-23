@@ -25,4 +25,10 @@ export class CategoryListComponent implements OnInit {
   onSaveCategory(category: Category): void {
     this.categoryService.create(category).subscribe();
   }
+
+  onDeleteCategory(id: number): void {
+    if (confirm('Tem certeza que deseja excluir esta categoria?')) {
+      this.categoryService.delete(id).subscribe();
+    }
+  }
 }

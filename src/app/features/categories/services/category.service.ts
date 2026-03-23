@@ -24,4 +24,10 @@ export class CategoryService {
     this.categoriesSubject.next(this.categories);
     return of(category);
   }
+
+  delete(id: number): Observable<void> {
+    this.categories = this.categories.filter(c => c.id !== id);
+    this.categoriesSubject.next(this.categories);
+    return of(undefined);
+  }
 }

@@ -53,3 +53,18 @@
   color: #6c757d;
   font-style: italic;
 }
+
+.btn-delete {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: background-color 0.2s;
+}
+
+.btn-delete:hover {
+  background-color: #c82333;
+}
