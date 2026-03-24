@@ -1,8 +1,7 @@
 import { Component, EventEmitter, Input, Output, OnChanges, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Category } from '../../models/category';
-import { BaseCategoryDto } from '../../models/base-category.dto';
+import { Category, BaseCategoryDto } from '../category-list/category.types';
 
 @Component({
   selector: 'app-category-form',

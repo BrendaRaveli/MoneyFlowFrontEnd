@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { CategoryListComponent } from './features/categories/pages/category-list/category-list-component';
+import { CategoryListComponent } from './features/categories/category-list/category-list';
 
 export const routes: Routes = [
   {
