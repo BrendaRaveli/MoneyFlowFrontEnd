@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CategoryService } from './category.service';
-import { Category, BaseCategoryDto, CreateCategoryDto, UpdateCategoryDto } from './category.types';
+import { Category } from './category';
+import { BaseCategoryDto } from '../dtos/base-category.dto';
+import { CreateCategoryDto } from '../dtos/create-category.dto';
+import { UpdateCategoryDto } from '../dtos/update-category.dto';
 import { CategoryForm } from '../category-form/category-form';
 
 @Component({

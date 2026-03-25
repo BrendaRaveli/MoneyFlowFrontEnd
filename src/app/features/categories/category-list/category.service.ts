@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of } from 'rxjs';
-import { Category, CreateCategoryDto, UpdateCategoryDto } from './category.types';
+import { Category } from './category';
+import { CreateCategoryDto } from '../dtos/create-category.dto';
+import { UpdateCategoryDto } from '../dtos/update-category.dto';
 
 @Injectable({
   providedIn: 'root'
