@@ -18,8 +18,8 @@
     <div class="form-group">
       <label for="type">Tipo:</label>
       <select id="type" formControlName="type">
-        <option value="income">Receita</option>
-        <option value="expense">Despesa</option>
+        <option [value]="CategoryType.Income">Receita</option>
+        <option [value]="CategoryType.Expense">Despesa</option>
       </select>
     </div>
 

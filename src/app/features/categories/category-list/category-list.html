@@ -11,7 +11,7 @@
     <table class="category-table">
       <thead>
         <tr>
-          <th>ID</th>
+          <th>ID (Guid)</th>
           <th>Nome</th>
           <th>Tipo</th>
           <th>Ações</th>
@@ -19,11 +19,11 @@
       </thead>
       <tbody>
         <tr *ngFor="let category of categories" [class.selected]="selectedCategory?.id === category.id">
-          <td>{{ category.id }}</td>
+          <td class="guid-cell">{{ category.id }}</td>
           <td>{{ category.name }}</td>
           <td>
-            <span [class]="'badge ' + category.type">
-              {{ category.type === 'income' ? 'Receita' : 'Despesa' }}
+            <span [class]="'badge ' + (category.type === CategoryType.Income ? 'income' : 'expense')">
+              {{ category.type === CategoryType.Income ? 'Receita' : 'Despesa' }}
             </span>
           </td>
           <td class="actions-cell">

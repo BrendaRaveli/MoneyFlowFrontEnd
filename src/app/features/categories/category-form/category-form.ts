@@ -1,8 +1,9 @@
 import { Component, EventEmitter, Input, Output, OnChanges, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Category } from '../category-list/category';
+import { CategoryResponseDto } from '../dtos/category-response.dto';
 import { BaseCategoryDto } from '../dtos/base-category.dto';
+import { CategoryType } from '../dtos/category-type.enum';
 
 @Component({
   selector: 'app-category-form',
@@ -12,16 +13,17 @@ import { BaseCategoryDto } from '../dtos/base-category.dto';
   styleUrl: './category-form.css',
 })
 export class CategoryForm implements OnChanges {
-  @Input() categoryToEdit: Category | null = null;
+  @Input() categoryToEdit: CategoryResponseDto | null = null;
   @Output() save = new EventEmitter<BaseCategoryDto>();
   @Output() cancel = new EventEmitter<void>();
   
   categoryForm: FormGroup;
+  CategoryType = CategoryType;
 
   constructor(private fb: FormBuilder) {
     this.categoryForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(3)]],
-      type: ['expense', [Validators.required]]
+      type: [CategoryType.Expense, [Validators.required]]
     });
   }
 
@@ -37,7 +39,8 @@ export class CategoryForm implements OnChanges {
   onSubmit(): void {
     if (this.categoryForm.valid) {
       const categoryData: BaseCategoryDto = {
-        ...this.categoryForm.value
+        name: this.categoryForm.value.name,
+        type: Number(this.categoryForm.value.type) // Garante que seja número para o enum
       };
       
       this.save.emit(categoryData);
@@ -51,6 +54,6 @@ export class CategoryForm implements OnChanges {
   }
 
   private resetForm(): void {
-    this.categoryForm.reset({ type: 'expense' });
+    this.categoryForm.reset({ type: CategoryType.Expense });
   }
 }

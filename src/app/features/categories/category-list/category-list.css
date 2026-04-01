@@ -92,3 +92,9 @@
 tr.selected {
   background-color: #fff3cd;
 }
+
+.guid-cell {
+  font-family: monospace;
+  font-size: 0.8rem;
+  color: #6c757d;
+}
