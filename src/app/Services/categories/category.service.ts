@@ -1,57 +1,60 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, of } from 'rxjs';
+import { inject, Injectable } from '@angular/core';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { CategoryResponseDto } from '../../DTOs/Categories/dtos/category-response.dto';
 import { CreateCategoryDto } from '../../DTOs/Categories/dtos/create-category.dto';
 import { UpdateCategoryDto } from '../../DTOs/Categories/dtos/update-category.dto';
-import { CategoryType } from '../../DTOs/Categories/dtos/category-type.enum';
+import { CategoriesApiService } from './categories-api.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CategoryService {
-  // Simulação de banco de dados com Guid (strings)
-  private categories: CategoryResponseDto[] = [
-    { id: '11111111-1111-1111-1111-111111111111', name: 'Alimentação', type: CategoryType.Expense },
-    { id: '22222222-2222-2222-2222-222222222222', name: 'Salário', type: CategoryType.Income }
-  ];
+  private api = inject(CategoriesApiService);
+  
+  private categories: CategoryResponseDto[] = [];
+  private categoriesSubject = new BehaviorSubject<CategoryResponseDto[]>([]);
 
-  private categoriesSubject = new BehaviorSubject<CategoryResponseDto[]>(this.categories);
+  constructor() {
+    this.loadInitialData();
+  }
+
+  private loadInitialData(): void {
+    this.api.getAll().subscribe(data => {
+      this.categories = data;
+      this.categoriesSubject.next(this.categories);
+    });
+  }
 
   getAll(): Observable<CategoryResponseDto[]> {
     return this.categoriesSubject.asObservable();
   }
 
-  getById(id: string): Observable<CategoryResponseDto | undefined> {
-    const category = this.categories.find(c => c.id === id);
-    return of(category);
-  }
-
-  create(category: CreateCategoryDto): Observable<CategoryResponseDto> {
-    // Em uma integração real, o HttpClient.post retornaria o objeto com o ID gerado pelo banco
-    const newCategory: CategoryResponseDto = {
-      ...category,
-      id: 'id-gerado-pelo-backend' // Apenas para simulação visual no mock
-    };
-    this.categories = [...this.categories, newCategory];
-    this.categoriesSubject.next(this.categories);
-    return of(newCategory);
-  }
-
-  // PUT /api/categories/{id}
-  // No PUT do REST, o ID vai na URL e o DTO (corpo) não precisa conter o ID
-  update(id: string, category: UpdateCategoryDto): Observable<CategoryResponseDto> {
-    this.categories = this.categories.map(c => 
-      c.id === id ? { ...category, id } : c
+  create(dto: CreateCategoryDto): Observable<CategoryResponseDto> {
+    return this.api.create(dto).pipe(
+      tap(newCategory => {
+        this.categories = [...this.categories, newCategory];
+        this.categoriesSubject.next(this.categories);
+      })
     );
-    this.categoriesSubject.next(this.categories);
-    const updated = this.categories.find(c => c.id === id)!;
-    return of(updated);
   }
 
-  // DELETE /api/categories/{id}
+  update(id: string, dto: UpdateCategoryDto): Observable<CategoryResponseDto> {
+    return this.api.update(id, dto).pipe(
+      tap(updatedCategory => {
+        this.categories = this.categories.map(c => 
+          c.id === id ? updatedCategory : c
+        );
+        this.categoriesSubject.next(this.categories);
+      })
+    );
+  }
+
   delete(id: string): Observable<void> {
-    this.categories = this.categories.filter(c => c.id !== id);
-    this.categoriesSubject.next(this.categories);
-    return of(undefined);
+    return this.api.delete(id).pipe(
+      tap(() => {
+        this.categories = this.categories.filter(c => c.id !== id);
+        this.categoriesSubject.next(this.categories);
+      })
+    );
   }
 }
