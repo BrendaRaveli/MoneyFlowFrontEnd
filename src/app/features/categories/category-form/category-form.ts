@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CategoryResponseDto } from '../../../DTOs/Categories/dtos/category-response.dto';
 import { BaseCategoryDto } from '../../../DTOs/Categories/dtos/base-category.dto';
-import { CategoryType } from '../../../DTOs/Categories/dtos/category-type.enum';
+import { CategoryType } from '../../../DTOs/enums/category-type.enum';
 
 @Component({
   selector: 'app-category-form',

@@ -6,7 +6,7 @@ import { BaseCategoryDto } from '../../../DTOs/Categories/dtos/base-category.dto
 import { CreateCategoryDto } from '../../../DTOs/Categories/dtos/create-category.dto';
 import { UpdateCategoryDto } from '../../../DTOs/Categories/dtos/update-category.dto';
 import { CategoryForm } from '../category-form/category-form';
-import { CategoryType } from '../../../DTOs/Categories/dtos/category-type.enum';
+import { CategoryType } from '../../../DTOs/enums/category-type.enum';
 
 @Component({
   selector: 'app-category-list',

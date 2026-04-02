@@ -1,7 +1,7 @@
-import { CategoryType } from './category-type.enum';
+import { CategoryType } from '../../enums/category-type.enum';
 
 export interface CategoryResponseDto {
-  id: string; // Guid do .NET é mapeado como string no TS
+  id: string;
   name: string;
   type: CategoryType;
 }
