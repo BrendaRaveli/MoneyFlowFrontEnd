@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CategoryService } from './category.service';
-import { CategoryResponseDto } from '../dtos/category-response.dto';
-import { BaseCategoryDto } from '../dtos/base-category.dto';
-import { CreateCategoryDto } from '../dtos/create-category.dto';
-import { UpdateCategoryDto } from '../dtos/update-category.dto';
+import { CategoryService } from '../../../Services/categories/category.service';
+import { CategoryResponseDto } from '../../../DTOs/Categories/dtos/category-response.dto';
+import { BaseCategoryDto } from '../../../DTOs/Categories/dtos/base-category.dto';
+import { CreateCategoryDto } from '../../../DTOs/Categories/dtos/create-category.dto';
+import { UpdateCategoryDto } from '../../../DTOs/Categories/dtos/update-category.dto';
 import { CategoryForm } from '../category-form/category-form';
-import { CategoryType } from '../dtos/category-type.enum';
+import { CategoryType } from '../../../DTOs/Categories/dtos/category-type.enum';
 
 @Component({
   selector: 'app-category-list',

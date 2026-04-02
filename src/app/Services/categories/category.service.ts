@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of } from 'rxjs';
-import { CategoryResponseDto } from '../dtos/category-response.dto';
-import { CreateCategoryDto } from '../dtos/create-category.dto';
-import { UpdateCategoryDto } from '../dtos/update-category.dto';
-import { CategoryType } from '../dtos/category-type.enum';
+import { CategoryResponseDto } from '../../DTOs/Categories/dtos/category-response.dto';
+import { CreateCategoryDto } from '../../DTOs/Categories/dtos/create-category.dto';
+import { UpdateCategoryDto } from '../../DTOs/Categories/dtos/update-category.dto';
+import { CategoryType } from '../../DTOs/Categories/dtos/category-type.enum';
 
 @Injectable({
   providedIn: 'root'

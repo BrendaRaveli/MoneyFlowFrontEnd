@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
 import { CategoryListComponent } from './category-list';
-import { CategoryService } from './category.service';
+import { CategoryService } from '../../../Services/categories/category.service';
 import { vi } from 'vitest';
 
 describe('CategoryListComponent', () => {
