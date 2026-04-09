@@ -1,12 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CategoryService } from '../../../Services/categories/category.service';
-import { CategoryResponseDto } from '../../../DTOs/Categories/dtos/category-response.dto';
-import { BaseCategoryDto } from '../../../DTOs/Categories/dtos/base-category.dto';
-import { CreateCategoryDto } from '../../../DTOs/Categories/dtos/create-category.dto';
-import { UpdateCategoryDto } from '../../../DTOs/Categories/dtos/update-category.dto';
+import { CategoryResponseDto } from '../models/category-response.dto';
+import { CategoryDto } from '../models/category.dto';
 import { CategoryForm } from '../category-form/category-form';
-import { CategoryType } from '../../../DTOs/enums/category-type.enum';
+import { CategoryType } from '../models/category-type.enum';
 
 @Component({
   selector: 'app-category-list',
@@ -28,15 +26,13 @@ export class CategoryListComponent implements OnInit {
     });
   }
 
-  onSaveCategory(categoryData: BaseCategoryDto): void {
+  onSaveCategory(categoryData: CategoryDto): void {
     if (this.selectedCategory) {
-      const updateData: UpdateCategoryDto = { ...categoryData };
-      this.categoryService.update(this.selectedCategory.id, updateData).subscribe(() => {
+      this.categoryService.update(this.selectedCategory.id, categoryData).subscribe(() => {
         this.selectedCategory = null;
       });
     } else {
-      const createData: CreateCategoryDto = { ...categoryData };
-      this.categoryService.create(createData).subscribe();
+      this.categoryService.create(categoryData).subscribe();
     }
   }
 

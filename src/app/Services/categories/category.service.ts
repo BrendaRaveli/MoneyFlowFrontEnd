@@ -1,8 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
-import { CategoryResponseDto } from '../../DTOs/Categories/dtos/category-response.dto';
-import { CreateCategoryDto } from '../../DTOs/Categories/dtos/create-category.dto';
-import { UpdateCategoryDto } from '../../DTOs/Categories/dtos/update-category.dto';
+import { CategoryResponseDto } from '../../features/categories/models/category-response.dto';
+import { CategoryDto } from '../../features/categories/models/category.dto';
 import { CategoriesApiService } from './categories-api.service';
 
 @Injectable({
@@ -29,7 +28,7 @@ export class CategoryService {
     return this.categoriesSubject.asObservable();
   }
 
-  create(dto: CreateCategoryDto): Observable<CategoryResponseDto> {
+  create(dto: CategoryDto): Observable<CategoryResponseDto> {
     return this.api.create(dto).pipe(
       tap(newCategory => {
         this.categories = [...this.categories, newCategory];
@@ -38,7 +37,7 @@ export class CategoryService {
     );
   }
 
-  update(id: string, dto: UpdateCategoryDto): Observable<CategoryResponseDto> {
+  update(id: string, dto: CategoryDto): Observable<CategoryResponseDto> {
     return this.api.update(id, dto).pipe(
       tap(updatedCategory => {
         this.categories = this.categories.map(c => 

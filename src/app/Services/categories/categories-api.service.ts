@@ -1,9 +1,8 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { CategoryResponseDto } from '../../DTOs/Categories/dtos/category-response.dto';
-import { CreateCategoryDto } from '../../DTOs/Categories/dtos/create-category.dto';
-import { UpdateCategoryDto } from '../../DTOs/Categories/dtos/update-category.dto';
+import { CategoryResponseDto } from '../../features/categories/models/category-response.dto';
+import { CategoryDto } from '../../features/categories/models/category.dto';
 
 @Injectable({
   providedIn: 'root'
@@ -20,11 +19,11 @@ export class CategoriesApiService {
     return this.http.get<CategoryResponseDto>(`${this.apiUrl}/${id}`);
   }
 
-  create(dto: CreateCategoryDto): Observable<CategoryResponseDto> {
+  create(dto: CategoryDto): Observable<CategoryResponseDto> {
     return this.http.post<CategoryResponseDto>(this.apiUrl, dto);
   }
 
-  update(id: string, dto: UpdateCategoryDto): Observable<CategoryResponseDto> {
+  update(id: string, dto: CategoryDto): Observable<CategoryResponseDto> {
     return this.http.put<CategoryResponseDto>(`${this.apiUrl}/${id}`, dto);
   }
 

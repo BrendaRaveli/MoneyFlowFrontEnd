@@ -1,9 +1,9 @@
 import { Component, EventEmitter, Input, Output, OnChanges, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { CategoryResponseDto } from '../../../DTOs/Categories/dtos/category-response.dto';
-import { BaseCategoryDto } from '../../../DTOs/Categories/dtos/base-category.dto';
-import { CategoryType } from '../../../DTOs/enums/category-type.enum';
+import { CategoryResponseDto } from '../models/category-response.dto';
+import { CategoryDto } from '../models/category.dto';
+import { CategoryType } from '../models/category-type.enum';
 
 @Component({
   selector: 'app-category-form',
@@ -14,7 +14,7 @@ import { CategoryType } from '../../../DTOs/enums/category-type.enum';
 })
 export class CategoryForm implements OnChanges {
   @Input() categoryToEdit: CategoryResponseDto | null = null;
-  @Output() save = new EventEmitter<BaseCategoryDto>();
+  @Output() save = new EventEmitter<CategoryDto>();
   @Output() cancel = new EventEmitter<void>();
   
   categoryForm: FormGroup;
@@ -38,7 +38,7 @@ export class CategoryForm implements OnChanges {
 
   onSubmit(): void {
     if (this.categoryForm.valid) {
-      const categoryData: BaseCategoryDto = {
+      const categoryData: CategoryDto = {
         name: this.categoryForm.value.name,
         type: Number(this.categoryForm.value.type) // Garante que seja número para o enum
       };
