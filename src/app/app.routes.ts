@@ -8,7 +8,7 @@ export const routes: Routes = [
     component: CategoryListComponent
   },
   {
-    path: 'transacoes',
+    path: 'transactions',
     component: TransactionListComponent
   },
   {
