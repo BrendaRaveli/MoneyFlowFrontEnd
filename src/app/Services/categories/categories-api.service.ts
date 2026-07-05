@@ -3,13 +3,14 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { CategoryResponseDto } from '../../features/categories/models/category-response.dto';
 import { CategoryDto } from '../../features/categories/models/category.dto';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CategoriesApiService {
   private http = inject(HttpClient);
-  private apiUrl = 'https://localhost:5001/api/categories'; // Ajuste conforme sua porta do backend
+  private apiUrl = `${environment.apiUrl}/categories`;
 
   getAll(): Observable<CategoryResponseDto[]> {
     return this.http.get<CategoryResponseDto[]>(this.apiUrl);
