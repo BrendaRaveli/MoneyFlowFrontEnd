@@ -1,13 +1,14 @@
 import { CommonModule, DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ToastModule } from 'primeng/toast';
 import { Transaction, TransactionFilter, TransactionStatus, TransactionType } from '../transaction.model';
 import { TransactionService } from '../../../Services/transactions/transaction.service';
 
 @Component({
   selector: 'app-transaction-list',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, ToastModule],
   templateUrl: './transaction-list.html',
   styleUrl: './transaction-list.css'
 })
