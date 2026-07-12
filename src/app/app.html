@@ -1,1 +1,18 @@
-<router-outlet></router-outlet>
+<div class="app-shell">
+  <main class="app-content">
+    <router-outlet></router-outlet>
+  </main>
+
+  <nav class="bottom-nav" aria-label="Navegação principal">
+    <a
+      *ngFor="let item of navItems"
+      class="nav-item"
+      [routerLink]="item.path"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      <span class="nav-icon">{{ item.icon }}</span>
+      <span class="nav-label">{{ item.label }}</span>
+    </a>
+  </nav>
+</div>
