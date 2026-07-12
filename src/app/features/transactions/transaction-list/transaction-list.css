@@ -142,7 +142,7 @@
 .filter-item {
   display: grid;
   gap: 0.45rem;
-  color: #c2cbdc;
+  color: #858585;
 }
 
 .filter-item span {
