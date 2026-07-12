@@ -18,4 +18,444 @@
   flex-wrap: wrap;
   padding: 1.5rem;
   border-radius: var(--mf-radius-lg);
-  border
+  border: 1px solid var(--mf-border);
+  background: linear-gradient(135deg, rgba(44, 214, 144, 0.16), rgba(24, 119, 242, 0.12));
+  box-shadow: var(--mf-shadow);
+}
+
+.page-title-group {
+  max-width: min(640px, 100%);
+}
+
+.eyebrow {
+  display: inline-flex;
+  margin-bottom: 0.75rem;
+  color: var(--mf-primary);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.page-title-group h1 {
+  margin: 0;
+  font-size: clamp(1.8rem, 2.6vw, 2.6rem);
+  line-height: 1.12;
+  color: var(--mf-text-1);
+}
+
+.page-title-group p {
+  margin: 0.75rem 0 0;
+  color: var(--mf-text-2);
+  line-height: 1.7;
+  max-width: 58ch;
+}
+
+.page-actions {
+  display: grid;
+  gap: 1rem;
+  align-items: start;
+  min-width: min(100%, 320px);
+}
+
+.top-controls,
+.button-group {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.period-selector,
+.filter-item {
+  display: grid;
+  gap: 0.45rem;
+  color: var(--mf-text-3);
+  font-size: 0.92rem;
+  font-weight: 500;
+}
+
+.period-selector select,
+.filter-item select,
+.filter-item input {
+  width: 100%;
+  min-width: 210px;
+  padding: 0.9rem 1rem;
+  border-radius: var(--mf-radius-md);
+  border: 1px solid var(--mf-border);
+  background: var(--mf-bg-2);
+  color: var(--mf-text-1);
+  outline: none;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease;
+}
+
+.period-selector select:focus,
+.filter-item select:focus,
+.filter-item input:focus {
+  border-color: rgba(44, 214, 144, 0.55);
+  box-shadow: 0 0 0 3px rgba(44, 214, 144, 0.12);
+}
+
+.filter-item input::placeholder {
+  color: var(--mf-text-3);
+}
+
+.summary-cards {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.summary-card {
+  padding: 1.4rem;
+  border-radius: var(--mf-radius-lg);
+  background: var(--mf-surface-1);
+  border: 1px solid var(--mf-border);
+  box-shadow: var(--mf-shadow);
+}
+
+.summary-card span {
+  display: block;
+  color: var(--mf-text-3);
+  margin-bottom: 0.9rem;
+  font-size: 0.92rem;
+}
+
+.summary-card strong {
+  display: block;
+  font-size: clamp(1.65rem, 2.2vw, 2rem);
+  margin-bottom: 0.6rem;
+  color: var(--mf-text-1);
+  letter-spacing: -0.03em;
+}
+
+.summary-card small {
+  color: var(--mf-text-3);
+}
+
+.card-income {
+  border-color: rgba(44, 214, 144, 0.35);
+}
+
+.card-expense {
+  border-color: rgba(248, 113, 113, 0.35);
+}
+
+.card-balance {
+  border-color: rgba(56, 189, 248, 0.35);
+}
+
+.card-pending {
+  border-color: rgba(251, 191, 36, 0.35);
+}
+
+.filters-panel {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 1rem;
+  align-items: end;
+  width: 100%;
+  padding: 1.25rem;
+  border-radius: var(--mf-radius-lg);
+  background: rgba(9, 20, 33, 0.62);
+  border: 1px solid var(--mf-border);
+}
+
+.filters-panel select,
+.filters-panel input {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.filter-item span {
+  color: var(--mf-text-3);
+  font-size: 0.9rem;
+}
+
+.button {
+  border: none;
+  border-radius: var(--mf-radius-md);
+  padding: 0.95rem 1.3rem;
+  cursor: pointer;
+  font-weight: 700;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease, opacity 0.18s ease;
+}
+
+.button:hover {
+  transform: translateY(-1px);
+  opacity: 0.96;
+}
+
+.button-primary {
+  background: linear-gradient(135deg, var(--mf-primary), var(--mf-secondary));
+  color: var(--mf-primary-contrast);
+  box-shadow: 0 18px 28px rgba(44, 214, 144, 0.18);
+}
+
+.button-secondary {
+  background: var(--mf-surface-3);
+  color: var(--mf-text-1);
+  border: 1px solid var(--mf-border);
+}
+
+.button-clear {
+  background: var(--mf-surface-3);
+  color: var(--mf-text-2);
+  border: 1px solid var(--mf-border);
+}
+
+.transaction-table-shell {
+  display: grid;
+  gap: 1rem;
+}
+
+.loading-state {
+  display: grid;
+  gap: 1rem;
+}
+
+.skeleton-card,
+.skeleton-table {
+  border-radius: var(--mf-radius-lg);
+  background: linear-gradient(90deg, rgba(255,255,255,0.04), rgba(255,255,255,0.1), rgba(255,255,255,0.04));
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+.skeleton-card {
+  height: 120px;
+}
+
+.skeleton-table {
+  min-height: 260px;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.85; }
+  50% { opacity: 0.5; }
+}
+
+.empty-state-card {
+  padding: 2rem;
+  border-radius: var(--mf-radius-lg);
+  background: var(--mf-surface-1);
+  border: 1px solid var(--mf-border);
+  box-shadow: var(--mf-shadow);
+  display: grid;
+  gap: 1rem;
+  text-align: center;
+}
+
+.empty-state-card strong {
+  color: var(--mf-text-1);
+  font-size: 1.35rem;
+}
+
+.empty-state-card p {
+  color: var(--mf-text-2);
+  margin: 0;
+}
+
+.transaction-table-container {
+  overflow-x: auto;
+  border-radius: var(--mf-radius-lg);
+  background: var(--mf-surface-1);
+  border: 1px solid var(--mf-border);
+  box-shadow: var(--mf-shadow);
+}
+
+.transaction-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 1020px;
+}
+
+.transaction-table thead th {
+  position: sticky;
+  top: 0;
+  background: var(--mf-surface-2);
+  color: var(--mf-text-2);
+  font-weight: 800;
+  padding: 1rem 1.1rem;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.transaction-table tbody tr {
+  border-top: 1px solid var(--mf-border);
+  transition: background-color 0.18s ease;
+}
+
+.transaction-table tbody tr:hover {
+  background: rgba(44, 214, 144, 0.04);
+}
+
+.transaction-table tbody tr:nth-child(odd) {
+  background: rgba(255, 255, 255, 0.015);
+}
+
+.transaction-table td {
+  padding: 1rem 1.1rem;
+  color: var(--mf-text-2);
+  vertical-align: middle;
+}
+
+.transaction-table td:nth-child(2) {
+  color: var(--mf-text-1);
+  font-weight: 650;
+}
+
+.actions-cell {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.action-button {
+  width: 100%;
+  padding: 0.6rem 0.9rem;
+  border-radius: var(--mf-radius-md);
+  border: 1px solid var(--mf-border);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--mf-text-2);
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.18s ease, color 0.18s ease, transform 0.18s ease;
+}
+
+.action-button:hover {
+  background: rgba(44, 214, 144, 0.1);
+  color: var(--mf-text-1);
+  transform: translateY(-1px);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 0.45rem 0.8rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.positive {
+  color: #9ef4be;
+  background: rgba(46, 221, 150, 0.14);
+}
+
+.negative {
+  color: #ffb7b0;
+  background: rgba(248, 113, 113, 0.14);
+}
+
+.status-complete {
+  color: #b2f2ff;
+  background: rgba(42, 161, 255, 0.14);
+}
+
+.status-warning {
+  color: #ffdb91;
+  background: rgba(255, 177, 64, 0.14);
+}
+
+.status-pending {
+  color: #ffd08a;
+  background: rgba(255, 166, 0, 0.14);
+}
+
+@media (max-width: 1120px) {
+  .summary-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .filters-panel {
+    grid-template-columns: repeat(2, minmax(220px, 1fr));
+  }
+}
+
+@media (max-width: 780px) {
+  .page-top,
+  .page-actions {
+    width: 100%;
+  }
+
+  .page-top {
+    flex-direction: column;
+  }
+
+  .top-controls,
+  .button-group {
+    width: 100%;
+  }
+
+  .button,
+  .button-group,
+  .button-group .button {
+    width: 100%;
+  }
+
+  .filters-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .transaction-table {
+    min-width: 760px;
+  }
+}
+
+@media (max-width: 620px) {
+  .transaction-page {
+    gap: 1rem;
+  }
+
+  .summary-cards,
+  .filters-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .transaction-table {
+    min-width: 100%;
+  }
+
+  .transaction-table thead {
+    display: none;
+  }
+
+  .transaction-table tbody {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .transaction-table tbody tr {
+    display: grid;
+    gap: 0.75rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: var(--mf-radius-lg);
+    border: 1px solid var(--mf-border);
+  }
+
+  .transaction-table td {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0;
+  }
+
+  .transaction-table td::before {
+    content: attr(data-label);
+    color: var(--mf-text-3);
+    margin-right: 0.5rem;
+    flex-shrink: 0;
+    font-weight: 700;
+  }
+
+  .transaction-table td:nth-child(1)::before { content: 'Data'; }
+  .transaction-table td:nth-child(2)::before { content: 'Descrição'; }
+  .transaction-table td:nth-child(3)::before { content: 'Categoria'; }
+  .transaction-table td:nth-child(4)::before { content: 'Conta'; }
+  .transaction-table td:nth-child(5)::before { content: 'Tipo'; }
+  .transaction-table td:nth-child(6)::before { content: 'Valor'; }
+  .transaction-table td:nth-child(7)::before { content: 'Status'; }
+  .transaction-table td:nth-child(8)::before { content: 'Recorrência'; }
+  .transaction-table td:nth-child(9)::before { content: 'Ações'; }
+}
