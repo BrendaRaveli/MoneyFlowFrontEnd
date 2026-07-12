@@ -1,15 +1,22 @@
 .category-page {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
-  padding: 2rem;
+  gap: 1.5rem;
+  padding: 0;
 }
 
 .category-list-container {
-  background-color: white;
+  background: var(--mf-surface-1);
+  color: var(--mf-text-2);
+  border: 1px solid var(--mf-border);
+  border-radius: var(--mf-radius-lg);
+  box-shadow: var(--mf-shadow);
   padding: 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.category-list-container h2 {
+  color: var(--mf-text-1);
+  margin-top: 0;
 }
 
 .category-table {
@@ -18,70 +25,75 @@
   margin-top: 1rem;
 }
 
-.category-table th, 
+.category-table th,
 .category-table td {
-  padding: 0.75rem;
+  padding: 0.85rem 0.75rem;
   text-align: left;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid var(--mf-border);
 }
 
 .category-table th {
-  background-color: #f8f9fa;
-  font-weight: bold;
+  background: rgba(15, 23, 42, 0.78);
+  color: var(--mf-text-2);
+  font-weight: 600;
+}
+
+.category-table td {
+  color: var(--mf-text-2);
 }
 
 .badge {
-  padding: 0.25rem 0.5rem;
-  border-radius: 4px;
-  font-size: 0.85rem;
-  font-weight: 500;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 600;
 }
 
 .badge.income {
-  background-color: #d4edda;
-  color: #155724;
+  background: rgba(44, 225, 166, 0.16);
+  color: var(--mf-primary);
 }
 
 .badge.expense {
-  background-color: #f8d7da;
-  color: #721c24;
+  background: rgba(248, 113, 113, 0.16);
+  color: var(--mf-danger);
 }
 
 .empty-state {
   text-align: center;
   padding: 2rem;
-  color: #6c757d;
+  color: var(--mf-text-3);
   font-style: italic;
 }
 
 .btn-delete {
-  background-color: #dc3545;
-  color: white;
+  background: var(--mf-danger);
+  color: var(--mf-text-1);
   border: none;
   padding: 0.4rem 0.8rem;
-  border-radius: 4px;
+  border-radius: 999px;
   cursor: pointer;
   font-size: 0.85rem;
-  transition: background-color 0.2s;
+  transition: opacity 0.2s ease;
 }
 
 .btn-delete:hover {
-  background-color: #c82333;
+  opacity: 0.92;
 }
 
 .btn-edit {
-  background-color: #ffc107;
-  color: #212529;
+  background: var(--mf-warning);
+  color: var(--mf-primary-contrast);
   border: none;
   padding: 0.4rem 0.8rem;
-  border-radius: 4px;
+  border-radius: 999px;
   cursor: pointer;
   font-size: 0.85rem;
-  transition: background-color 0.2s;
+  transition: opacity 0.2s ease;
 }
 
 .btn-edit:hover {
-  background-color: #e0a800;
+  opacity: 0.92;
 }
 
 .actions-cell {
@@ -90,11 +102,11 @@
 }
 
 tr.selected {
-  background-color: #fff3cd;
+  background: rgba(56, 189, 248, 0.1);
 }
 
 .guid-cell {
   font-family: monospace;
   font-size: 0.8rem;
-  color: #6c757d;
+  color: var(--mf-text-3);
 }

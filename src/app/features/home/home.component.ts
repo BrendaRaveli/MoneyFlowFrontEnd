@@ -49,11 +49,11 @@ import { RouterLink } from '@angular/router';
 
     .hero-card,
     .summary-card {
-      background: rgba(9, 20, 33, 0.82);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 1.25rem;
+      background: var(--mf-surface-1);
+      border: 1px solid var(--mf-border);
+      border-radius: var(--mf-radius-lg);
       padding: 1.25rem;
-      box-shadow: 0 16px 40px rgba(2, 8, 23, 0.28);
+      box-shadow: var(--mf-shadow);
     }
 
     .hero-card {
@@ -66,7 +66,7 @@ import { RouterLink } from '@angular/router';
       text-transform: uppercase;
       letter-spacing: 0.24em;
       font-size: 0.72rem;
-      color: #70e3b8;
+      color: var(--mf-primary);
       font-weight: 700;
     }
 
@@ -74,11 +74,12 @@ import { RouterLink } from '@angular/router';
       margin: 0;
       font-size: clamp(1.5rem, 2.3vw, 2.15rem);
       line-height: 1.1;
+      color: var(--mf-text-1);
     }
 
     .hero-copy {
       margin: 0.75rem 0 0;
-      color: #a8b7cb;
+      color: var(--mf-text-2);
       max-width: 42rem;
     }
 
@@ -101,14 +102,14 @@ import { RouterLink } from '@angular/router';
     }
 
     .primary-btn {
-      background: linear-gradient(135deg, #2ce1a6, #18a0c9);
-      color: #03111b;
+      background: linear-gradient(135deg, var(--mf-primary), var(--mf-secondary));
+      color: var(--mf-primary-contrast);
     }
 
     .secondary-btn {
       background: rgba(255, 255, 255, 0.06);
-      color: #f4f7fb;
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--mf-text-1);
+      border: 1px solid var(--mf-border);
     }
 
     .primary-btn:hover,
@@ -125,7 +126,7 @@ import { RouterLink } from '@angular/router';
 
     .summary-label {
       display: block;
-      color: #7f93ac;
+      color: var(--mf-text-3);
       font-size: 0.8rem;
       margin-bottom: 0.3rem;
       text-transform: uppercase;
@@ -136,11 +137,12 @@ import { RouterLink } from '@angular/router';
       display: block;
       font-size: 1.15rem;
       margin-bottom: 0.2rem;
+      color: var(--mf-text-1);
     }
 
     .summary-card p {
       margin: 0;
-      color: #8fa3ba;
+      color: var(--mf-text-2);
       font-size: 0.92rem;
     }
 

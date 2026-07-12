@@ -1,10 +1,17 @@
 .category-form-container {
   padding: 1.5rem;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  max-width: 400px;
+  background: var(--mf-surface-1);
+  color: var(--mf-text-2);
+  border: 1px solid var(--mf-border);
+  border-radius: var(--mf-radius-lg);
+  box-shadow: var(--mf-shadow);
+  max-width: 420px;
   margin-bottom: 2rem;
+}
+
+.category-form-container h2 {
+  color: var(--mf-text-1);
+  margin-top: 0;
 }
 
 .form-group {
@@ -15,13 +22,21 @@
 
 label {
   margin-bottom: 0.5rem;
-  font-weight: bold;
+  font-weight: 600;
+  color: var(--mf-text-2);
 }
 
-input, select {
-  padding: 0.5rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+input,
+select {
+  padding: 0.7rem 0.8rem;
+  border: 1px solid var(--mf-border);
+  border-radius: var(--mf-radius-md);
+  background: var(--mf-bg-2);
+  color: var(--mf-text-1);
+}
+
+input::placeholder {
+  color: var(--mf-text-3);
 }
 
 .form-actions {
@@ -31,29 +46,32 @@ input, select {
 
 button {
   padding: 0.75rem 1.5rem;
-  background-color: #007bff;
-  color: white;
+  background: var(--mf-primary);
+  color: var(--mf-primary-contrast);
   border: none;
-  border-radius: 4px;
+  border-radius: 999px;
   cursor: pointer;
   flex: 1;
+  font-weight: 600;
 }
 
 button.btn-cancel {
-  background-color: #6c757d;
+  background: rgba(148, 163, 184, 0.16);
+  color: var(--mf-text-2);
 }
 
 button.btn-cancel:hover {
-  background-color: #5a6268;
+  opacity: 0.92;
 }
 
 button:disabled {
-  background-color: #ccc;
+  background: rgba(148, 163, 184, 0.22);
+  color: var(--mf-text-3);
   cursor: not-allowed;
 }
 
 .error {
-  color: #dc3545;
+  color: var(--mf-danger);
   font-size: 0.8rem;
   margin-top: 0.25rem;
 }
